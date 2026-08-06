@@ -1,0 +1,17 @@
+﻿{
+  Diagnostics: [
+    {
+      Message: GodotComponent does not validate any exports. The class attribute ExportValidation should be removed.,
+      Severity: Warning,
+      WarningLevel: 1,
+      Descriptor: {
+        Id: GEV01,
+        Title: Attributed class does not validate any exports.,
+        MessageFormat: {0} does not validate any exports. The class attribute {1} should be removed.,
+        Category: Usage,
+        DefaultSeverity: Warning,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}
