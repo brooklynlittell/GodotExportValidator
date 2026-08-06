@@ -5,8 +5,10 @@ Validates C# Godot exports to catch null values earlier.
 # Usage
 1. Add Nuget Package to your Godot C# project
 2. Follow the following example
-## Player.cs
+## Example
 ```c#
+// Player.cs
+
 using GodotExportValidator;
 
 [ExportValidation]                   // <- Class Attribute
@@ -28,10 +30,13 @@ public partial class Player : CharacterBody3D
 ```
 
 <details>
-<summary>
-### Generated Code
-</summary>
+
+<summary>Generated Code</summary>
+
 ```c#
+// Player.g.cs
+// This file will not appear in your editor but is consumed by the compiler
+
 public partial class Player
 {
     private void ValidateExports()
@@ -47,6 +52,7 @@ public partial class Player
     }
 }
 ```
+
 </details>
 
 # Why?
