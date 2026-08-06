@@ -96,7 +96,7 @@ public partial class {classValidation.ClassName}
             sb.Append($@"
         if ({field.FieldName} == null)
         {{
-            GD.PushError(""Export null: {classValidation.ClassName} {field.FieldName} {field.FieldType}"");
+            GD.PushError(""Null Export: {classValidation.ClassName} {field.FieldName} {field.FieldType}"");
         }}");
         }
         
