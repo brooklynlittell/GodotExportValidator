@@ -6,6 +6,7 @@ using System.Threading;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
+using GodotExportValidator.Util;
 
 namespace GodotExportValidator;
 
@@ -14,13 +15,14 @@ public class ExportValidatorGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
+        var name = typeof(ExportValidation).FullName!;
         var syntaxProvider = context.SyntaxProvider.ForAttributeWithMetadataName(
-            typeof(ExportValidation).FullName!,
+            name,
             IsSyntaxTarget,
             GetSyntaxTarget
-        );
+        ).Collect();
         
-        context.RegisterSourceOutput(syntaxProvider.Collect(), OnExecute);
+        context.RegisterSourceOutput(syntaxProvider, OnExecute);
     }
 
     private bool IsSyntaxTarget(SyntaxNode syntaxNode, CancellationToken cancellationToken)
@@ -57,10 +59,10 @@ public class ExportValidatorGenerator : IIncrementalGenerator
         return new ClassExportValidation(
             GeneratorHelpers.GetNamespace(context.TargetNode as ClassDeclarationSyntax),
             classSymbol.Name,
-            nullCheckList.ToImmutableList());
+            nullCheckList);
     }
 
-    private static void OnExecute(SourceProductionContext context, ImmutableArray<ClassExportValidation> classValidations)
+    private void OnExecute(SourceProductionContext context, ImmutableArray<ClassExportValidation> classValidations)
     {
         foreach (var classValidation in classValidations)
         {
@@ -105,11 +107,19 @@ public partial class {classValidation.ClassName}
         return sb.ToString();
     }
 
-    private record struct ClassExportValidation(
-        string Namespace,
-        string ClassName,
-        IImmutableList<ExportToNullValidate> ValidationList
-    );
+    private record struct ClassExportValidation
+    {
+        public readonly string Namespace;
+        public readonly string ClassName;
+        public readonly EquatableArray<ExportToNullValidate> ValidationList;
+
+        public ClassExportValidation(string nameSpace, string className, List<ExportToNullValidate> validationList)
+        {
+            Namespace = nameSpace;
+            ClassName = className;
+            ValidationList = new EquatableArray<ExportToNullValidate>(validationList.ToArray());
+        }
+    }
 
     private record struct ExportToNullValidate(string FieldName, string FieldType);
 }
