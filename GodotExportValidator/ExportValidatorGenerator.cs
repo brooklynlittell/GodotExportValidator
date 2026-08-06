@@ -25,12 +25,12 @@ public class ExportValidatorGenerator : IIncrementalGenerator
         context.RegisterSourceOutput(syntaxProvider, OnExecute);
     }
 
-    private bool IsSyntaxTarget(SyntaxNode syntaxNode, CancellationToken cancellationToken)
+    private static bool IsSyntaxTarget(SyntaxNode syntaxNode, CancellationToken cancellationToken)
     {
         return syntaxNode is ClassDeclarationSyntax;
     }
 
-    private ClassExportValidation GetSyntaxTarget(GeneratorAttributeSyntaxContext context, CancellationToken cancellationToken)
+    private static ClassExportValidation? GetSyntaxTarget(GeneratorAttributeSyntaxContext context, CancellationToken cancellationToken)
     {
         var classSymbol = (ITypeSymbol)context.TargetSymbol;
         var nullCheckList = new List<ExportToNullValidate>();
@@ -56,19 +56,26 @@ public class ExportValidatorGenerator : IIncrementalGenerator
             }
         }
 
+        if (nullCheckList.Count == 0)
+        {
+            return null;
+        }
+
         return new ClassExportValidation(
             GeneratorHelpers.GetNamespace(context.TargetNode as ClassDeclarationSyntax),
             classSymbol.Name,
             nullCheckList);
     }
 
-    private void OnExecute(SourceProductionContext context, ImmutableArray<ClassExportValidation> classValidations)
+    private static void OnExecute(SourceProductionContext context, ImmutableArray<ClassExportValidation?> classValidations)
     {
         foreach (var classValidation in classValidations)
         {
+            if (classValidation == null) continue;
+            
             context.CancellationToken.ThrowIfCancellationRequested();
-            var result = GenerateValidationClass(classValidation);
-            context.AddSource($"{classValidation.Namespace}.{classValidation.ClassName}.g.cs", SourceText.From(result, Encoding.UTF8));
+            var result = GenerateValidationClass(classValidation.Value);
+            context.AddSource($"{classValidation.Value.Namespace}.{classValidation.Value.ClassName}.g.cs", SourceText.From(result, Encoding.UTF8));
         }
     }
     
