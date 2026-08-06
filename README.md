@@ -2,6 +2,8 @@
 
 Validates C# Godot exports to catch null values earlier.
 
+Built using Godot 4.7, but should support Godot 4.5+
+
 # Usage
 1. Add Nuget Package to your Godot C# project
 2. Follow the following example
