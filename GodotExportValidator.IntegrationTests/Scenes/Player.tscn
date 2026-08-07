@@ -5,8 +5,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_popsc"]
 
-[node name="Player" type="Node3D" unique_id=676423050]
+[node name="Player" type="Node3D" unique_id=676423050 node_paths=PackedStringArray("_healthComponent", "_rayCast")]
 script = ExtResource("1_kyqiw")
+_healthComponent = NodePath("HealthComponent")
+_rayCast = NodePath("InteractionRayCast")
 
 [node name="HealthComponent" type="Node3D" parent="." unique_id=722307219]
 script = ExtResource("1_rpqav")

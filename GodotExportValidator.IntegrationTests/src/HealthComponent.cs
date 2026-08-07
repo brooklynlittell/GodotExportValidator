@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace GodotExportValidator.IntegrationTests;
 
 public partial class HealthComponent : Node3D
 {
