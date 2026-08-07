@@ -61,3 +61,6 @@ nunit-*.xml
 
 # User Settings
 *.sln.DotSettings.user
+
+# Godot
+**/.godot/
