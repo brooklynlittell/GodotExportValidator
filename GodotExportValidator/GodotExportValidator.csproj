@@ -3,16 +3,37 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>10</LangVersion>
+        <RootNamespace>GodotExportValidator</RootNamespace>
+        <AssemblyName>BrooklynLittell.GodotExportValidator</AssemblyName>
         <Nullable>enable</Nullable>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
     </PropertyGroup>
+    
+    <!-- Nuget Package Settings -->
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Authors>Brooklyn Littell</Authors>
+        <Description>
+            Validates C# Godot exports to catch null values earlier.
+        </Description>
+        <RepositoryUrl>https://github.com/brooklynlittell/GodotExportValidator</RepositoryUrl>
+        <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>Godot, Export, Source Generator</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>0.1.4-beta</Version>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" Link="Package\analyzers\dotnet\cs\$(AssemblyName).dll" />
+        <None Include="..\README.md" Pack="true" PackagePath="\" Link="Package\docs\README.md" />
+    </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
     </ItemGroup>
 

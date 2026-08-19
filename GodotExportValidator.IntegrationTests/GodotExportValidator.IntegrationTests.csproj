@@ -1,12 +1,25 @@
-<Project Sdk="Godot.NET.Sdk/4.7.0">
+<Project Sdk="Godot.NET.Sdk/4.7.2">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
-      <Nullable>enable</Nullable>
-<!--      <IsPackable>false</IsPackable>-->
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- The emitted files are not part of the compilation nor design.
+        They're only for peeking at the generated sources. Sometimes the
+        emitted files get corrupted, but that won't break anything. -->
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+    
   <ItemGroup>
-    <ProjectReference Include="..\GodotExportValidator\GodotExportValidator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.4-beta" />
   </ItemGroup>
+    
+<!--  <ItemGroup>-->
+<!--    <ProjectReference Include="..\GodotExportValidator\GodotExportValidator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
+<!--  </ItemGroup>-->
 </Project>
