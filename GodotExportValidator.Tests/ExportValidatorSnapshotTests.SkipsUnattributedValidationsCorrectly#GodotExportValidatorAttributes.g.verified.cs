@@ -1,10 +1,11 @@
 ﻿//HintName: GodotExportValidatorAttributes.g.cs
 
+using System;
 namespace GodotExportValidator
 {
-    [System.AttributeUsage(System.AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class)]
     internal sealed class ExportValidation : Attribute { }
 
-    [System.AttributeUsage(System.AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Field)]
     internal sealed class ExportNullCheck : Attribute { }
 }

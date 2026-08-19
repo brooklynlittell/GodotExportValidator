@@ -16,7 +16,7 @@
     </PropertyGroup>
     
   <ItemGroup>
-    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.4-beta" />
+    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.6-beta" />
   </ItemGroup>
     
 <!--  <ItemGroup>-->
