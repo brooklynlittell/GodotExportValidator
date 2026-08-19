@@ -8,11 +8,11 @@ public partial class Player : Node3D
 {
     [Export]
     [ExportNullCheck]
-    private HealthComponent _healthComponent;
+    private HealthComponent _healthComponent = null!;
 
     [Export]
     [ExportNullCheck]
-    private RayCast3D _rayCast;
+    private RayCast3D _rayCast = null!;
 
     public override void _Ready()
     {
