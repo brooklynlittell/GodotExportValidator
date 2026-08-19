@@ -1,0 +1,26 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+    <PropertyGroup>
+        <!-- The emitted files are not part of the compilation nor design.
+        They're only for peeking at the generated sources. -->
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
+    
+  <!-- To Test Local Package, use below -->
+<!--  <ItemGroup>-->
+<!--    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.6-beta" />-->
+<!--  </ItemGroup>-->
+    
+  <!-- Direct Project reference, use for GitHub actions -->
+  <ItemGroup>
+    <ProjectReference Include="..\GodotExportValidator\GodotExportValidator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

@@ -58,3 +58,9 @@ nunit-*.xml
 
 # Verify Tests
 *.received.*
+
+# User Settings
+*.sln.DotSettings.user
+
+# Godot
+**/.godot/

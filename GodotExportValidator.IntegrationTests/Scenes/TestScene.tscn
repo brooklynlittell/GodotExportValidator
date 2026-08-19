@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dcljmk6dbdjlb"]
+
+[ext_resource type="PackedScene" uid="uid://csmsxic3ao42k" path="res://Scenes/Player.tscn" id="1_b5ayd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_popsc"]
+size = Vector2(30, 30)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wwtol"]
+
+[sub_resource type="Sky" id="Sky_popsc"]
+sky_material = SubResource("ProceduralSkyMaterial_wwtol")
+
+[sub_resource type="Environment" id="Environment_popsc"]
+background_mode = 2
+sky = SubResource("Sky_popsc")
+
+[node name="Node3D" type="Node3D" unique_id=1471809759]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1353853518]
+mesh = SubResource("PlaneMesh_popsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1441188829]
+environment = SubResource("Environment_popsc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1988681476]
+transform = Transform3D(0.93926495, -0.13269839, -0.3165003, 0.34319282, 0.36317468, 0.8662118, 0, -0.92222303, 0.3866584, 0, 4.4604654, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=676423050 instance=ExtResource("1_b5ayd")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1813892341]
+transform = Transform3D(0.70590574, -0.34027386, 0.6212173, 0, 0.87704664, 0.48040527, -0.70830584, -0.3391208, 0.6191122, 2.9984107, 3.6207128, 3.0517902)

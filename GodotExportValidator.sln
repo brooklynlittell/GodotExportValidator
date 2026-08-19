@@ -4,10 +4,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodotExportValidator", "God
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodotExportValidator.Tests", "GodotExportValidator.Tests\GodotExportValidator.Tests.csproj", "{E91ACA41-9974-47BC-94E6-24564CE78FD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodotExportValidator.IntegrationTests", "GodotExportValidator.IntegrationTests\GodotExportValidator.IntegrationTests.csproj", "{03359911-CE99-484E-B41C-FF666A841BBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A2DB2A42-0A48-428D-9C5D-FE644D0EC191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -18,5 +22,11 @@ Global
 		{E91ACA41-9974-47BC-94E6-24564CE78FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91ACA41-9974-47BC-94E6-24564CE78FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91ACA41-9974-47BC-94E6-24564CE78FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{03359911-CE99-484E-B41C-FF666A841BBC}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

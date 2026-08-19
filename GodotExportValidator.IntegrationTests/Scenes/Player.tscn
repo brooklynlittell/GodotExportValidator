@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://csmsxic3ao42k"]
+
+[ext_resource type="Script" uid="uid://crtiaodqbrddb" path="res://src/Player.cs" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://b8f1rcyl3ugr" path="res://src/HealthComponent.cs" id="1_rpqav"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_popsc"]
+
+[node name="Player" type="Node3D" unique_id=676423050 node_paths=PackedStringArray("_healthComponent", "_rayCast")]
+script = ExtResource("1_kyqiw")
+_healthComponent = NodePath("HealthComponent")
+_rayCast = NodePath("InteractionRayCast")
+
+[node name="HealthComponent" type="Node3D" parent="." unique_id=722307219]
+script = ExtResource("1_rpqav")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1538759160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_popsc")
+
+[node name="InteractionRayCast" type="RayCast3D" parent="." unique_id=915951326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+target_position = Vector3(0, 0, -3)
