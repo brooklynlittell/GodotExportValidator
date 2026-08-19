@@ -9,17 +9,18 @@
 
     <PropertyGroup>
         <!-- The emitted files are not part of the compilation nor design.
-        They're only for peeking at the generated sources. Sometimes the
-        emitted files get corrupted, but that won't break anything. -->
+        They're only for peeking at the generated sources. -->
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
     
-  <ItemGroup>
-    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.6-beta" />
-  </ItemGroup>
-    
+  <!-- To Test Local Package, use below -->
 <!--  <ItemGroup>-->
-<!--    <ProjectReference Include="..\GodotExportValidator\GodotExportValidator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
+<!--    <PackageReference Include="BrooklynLittell.GodotExportValidator" Version="0.1.6-beta" />-->
 <!--  </ItemGroup>-->
+    
+  <!-- Direct Project reference, use for GitHub actions -->
+  <ItemGroup>
+    <ProjectReference Include="..\GodotExportValidator\GodotExportValidator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
 </Project>
