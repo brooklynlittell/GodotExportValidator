@@ -15,9 +15,13 @@ public class ExportValidatorGenerator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        var name = typeof(ExportValidation).FullName!;
+        // Add attributes to consuming project
+        context.RegisterPostInitializationOutput(static ctx => 
+            ctx.AddSource("GodotExportValidatorAttributes.g.cs", SourceText.From(AttributeHelper.Attributes, Encoding.UTF8)));
+        
+        // Setup generator
         var syntaxProvider = context.SyntaxProvider.ForAttributeWithMetadataName(
-            name,
+            AttributeHelper.ExportValidationFullName,
             IsSyntaxTarget,
             GetSyntaxTarget
         ).Collect();
@@ -47,7 +51,7 @@ public class ExportValidatorGenerator : IIncrementalGenerator
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                if (attribute.AttributeClass!.Name == nameof(ExportNullCheck))
+                if (attribute.AttributeClass!.Name == AttributeHelper.ExportNullCheckName)
                 {
                     nullCheckList.Add(new ExportToNullValidate(
                         fieldSymbol.Name,
@@ -57,7 +61,7 @@ public class ExportValidatorGenerator : IIncrementalGenerator
         }
 
         return new ClassExportValidation(
-            GeneratorHelpers.GetNamespace(context.TargetNode as ClassDeclarationSyntax),
+            GeneratorHelpers.GetNamespace((context.TargetNode as ClassDeclarationSyntax)!),
             classSymbol.Name,
             nullCheckList);
     }
@@ -75,7 +79,7 @@ public class ExportValidatorGenerator : IIncrementalGenerator
                     category: "Usage",
                     defaultSeverity: DiagnosticSeverity.Warning,
                     isEnabledByDefault: true);
-                var diagnostic = Diagnostic.Create(descriptor, null, classValidation.ClassName, nameof(ExportValidation));
+                var diagnostic = Diagnostic.Create(descriptor, null, classValidation.ClassName, AttributeHelper.ExportValidationName);
                 context.ReportDiagnostic(diagnostic);
                 continue;
             }

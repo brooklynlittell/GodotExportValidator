@@ -7,7 +7,7 @@
         <AssemblyName>BrooklynLittell.GodotExportValidator</AssemblyName>
         <Nullable>enable</Nullable>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <IsRoslynComponent>true</IsRoslynComponent>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
     </PropertyGroup>
     
     <!-- Nuget Package Settings -->
@@ -26,6 +26,12 @@
         <PackageTags>Godot, Export, Source Generator</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Version>0.1.4-beta</Version>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <NoWarn>1701;1702;NU5128</NoWarn>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <NoWarn>1701;1702;NU5128</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" Link="Package\analyzers\dotnet\cs\$(AssemblyName).dll" />
