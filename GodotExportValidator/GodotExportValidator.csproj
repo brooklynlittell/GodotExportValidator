@@ -23,8 +23,9 @@
         <RepositoryUrl>https://github.com/brooklynlittell/GodotExportValidator</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageTags>Godot, Export, Source Generator</PackageTags>
+        <PackageTags>Godot</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <NoWarn>1701;1702;NU5128</NoWarn>
